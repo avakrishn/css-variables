@@ -3,27 +3,46 @@
 import { spacingArgs,  blurArgs, colorArgs } from './data.mjs';
 
 window.onload = () =>{
-    initPage();
+    initApp();
 }
 
-const initPage = () => {
+const initApp = () => {
     const header = document.querySelector('h1');
     const controls = document.querySelector('.controls');
     const span = document.createElement('span');
 
-    span.classList.add('h1');
+    span.classList.add('hl');
     span.innerText = 'JS';
 
     header.innerText = 'Manipulate CSS Variables with ';
     header.appendChild(span);
 
     const spacing = createControl(...spacingArgs);
-
+ 
     const blur = createControl(...blurArgs);
 
     const color = createControl(...colorArgs);
 
     controls.append(spacing, blur, color);
+
+    const inputs = document.querySelectorAll('.controls input');
+
+    inputs.forEach(input => {
+        input.addEventListener('change', handleUpdate);
+    });
+
+    inputs.forEach(input => {
+        input.addEventListener('mousemove', handleUpdate);
+    });
+
+    function handleUpdate(){
+        // this.dataset is an object that contains all the data attributes from that specific element eg. sizing
+        const suffix = this.dataset.sizing || '';
+
+        //documentElement references the root node of our document, thereby updating CSS variables
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+
+    }
 
     function createControl(name, type, value, min, max, dataSizing){
         const wrapper = document.createElement('div');
