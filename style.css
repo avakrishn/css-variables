@@ -6,6 +6,21 @@
     --blur: 10px;
 }
 
+body{
+    text-align: center;
+    background: rgb(172, 118, 189);
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.controls input{
+    margin-right: 20px;
+}
+
 img{
     padding: var(--spacing);
     background: var(--color);
@@ -15,3 +30,7 @@ img{
 .hl{
     color: var(--color);
 } 
+
+.controlValue{
+    margin-top: 10px;
+}
