@@ -1,0 +1,17 @@
+/* CSS Variables */
+
+:root {
+    --color: #ffc600;
+    --spacing: 10px;
+    --blur: 10px;
+}
+
+img{
+    padding: var(--spacing);
+    background: var(--color);
+    filter: blur(var(--blur));
+}
+
+.hl{
+    color: var(--color);
+} 
